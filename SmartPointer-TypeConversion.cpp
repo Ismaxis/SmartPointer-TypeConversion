@@ -41,8 +41,5 @@ int main()
     std::cout << "print(SmartPointer<C>): ";
     print(c);
 
-    SmartPointer<A> ab(new B);
-    SmartPointer<A> ac(new C);
-
     return 0;
 }

@@ -43,3 +43,9 @@ int main()
 
     return 0;
 }
+
+/*
+ Output:
+    print(SmartPointer<B>): B talking!
+    print(SmartPointer<C>): C talking!
+ */

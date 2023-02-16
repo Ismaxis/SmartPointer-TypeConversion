@@ -3,7 +3,7 @@ template <class T>
 class SmartPointer
 {
 public:
-    explicit SmartPointer(T* rawPointer = nullptr) : rawPointer(rawPointer)
+    SmartPointer(T* rawPointer = nullptr) : rawPointer(rawPointer)
     { }
 
     SmartPointer(const SmartPointer& rhs) = delete;
@@ -56,7 +56,4 @@ public:
 
 private:
     T* rawPointer;
-
-    /* template <class U>
-     friend class SmartPointer<U>;*/
 };

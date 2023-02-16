@@ -3,14 +3,15 @@ template <class T>
 class SmartPointer
 {
 public:
-    SmartPointer(T* rawPointer = nullptr) : rawPointer(rawPointer)
+    SmartPointer(T* rawPointer = nullptr) : rawPointer(rawPointer), isOwner(true)
     { }
 
-    SmartPointer(const SmartPointer& rhs) = delete;
+    SmartPointer(SmartPointer& rhs) : rawPointer(rhs.release()), isOwner(true)
+    { }
 
     template <class U>
     // ReSharper disable once CppNonExplicitConvertingConstructor
-    SmartPointer(SmartPointer<U>& rhs) : rawPointer(rhs.release())
+    SmartPointer(SmartPointer<U>& rhs) : rawPointer(rhs.get()), isOwner(false)
     { }
 
     template <class U>
@@ -25,7 +26,10 @@ public:
 
     ~SmartPointer()
     {
-        delete rawPointer;
+        if (isOwner)
+        {
+            delete rawPointer;
+        }
     }
 
     T& operator*() const
@@ -40,14 +44,18 @@ public:
 
     T* release()
     {
-        T* released = rawPointer;
-        rawPointer = nullptr;
-        return released;
+        isOwner = false;
+        return get();
+    }
+
+    T* get()
+    {
+        return rawPointer;
     }
 
     void reset(T* newRawPointer)
     {
-        if (newRawPointer != rawPointer)
+        if (isOwner && newRawPointer != rawPointer)
         {
             delete rawPointer;
             rawPointer = newRawPointer;
@@ -56,4 +64,5 @@ public:
 
 private:
     T* rawPointer;
+    bool isOwner;
 };

@@ -10,7 +10,6 @@ public:
     { }
 
     template <class U>
-    // ReSharper disable once CppNonExplicitConvertingConstructor
     SmartPointer(SmartPointer<U>& rhs) : rawPointer(rhs.get()), isOwner(false)
     { }
 

@@ -1,9 +1,9 @@
-# Example of *Smart pointers* conversion of inherit types.
+# Example of Smart pointers conversion of inherit types.
 
 First of all, take close attention to **converting constructor**. It is not declared as explicit, what allows compiler to use it for *implicit converions*:
 https://github.com/Ismaxis/SmartPointer-TypeConversion/blob/ea934f3c69b9c7869ef5dd762c9deb8dd698d55d/SmartPointer.h#L14
 
-#### Now lets have a look at actual *Raw pointers-like* behaviour.
+#### Now lets have a look at actual Raw pointers-like behaviour.
 
 Function ```print``` has ```const SmartPointer<A>&``` as parameter: 
 https://github.com/Ismaxis/SmartPointer-TypeConversion/blob/ea934f3c69b9c7869ef5dd762c9deb8dd698d55d/main.cpp#L29
@@ -26,7 +26,7 @@ https://github.com/Ismaxis/SmartPointer-TypeConversion/blob/ea934f3c69b9c7869ef5
 
 And conversion happends!
 
-#### As the result we have a *Smart pointer* that behaves similar to *Raw pointer*, from inheritance perspective. :tada:
+#### As the result we have a Smart pointer that behaves similar to Raw pointer, from inheritance perspective. :tada:
 
 ---
 #### This example is taken from "More effective C++" by Scott Meyers
